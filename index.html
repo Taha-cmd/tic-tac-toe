@@ -1,19 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Enter your description here"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<title>Title</title>
-</head>
-<body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+    <h1 class="text-center">Tic Tac Toe</h1>
+
+
+    <p class="d-flex justify-content-center mb-0"> <span id="current-symbol">X</span>'s turn</p>
+
+    <div class="d-flex justify-content-center col-12 m-0 px-5 pb-5">
+        <div class="d-flex flex-row flex-wrap justify-content-center col-12 col-md-8 col-lg-6 m-5" id="box">
+            <div class="d-flex justify-content-center align-items-center col-4 cell" id="cell1"></div>
+            <div class="d-flex justify-content-center align-items-center col-4 cell" id="cell2"></div>
+            <div class="d-flex justify-content-center align-items-center col-4 cell" id="cell3"></div>
+            <div class="d-flex justify-content-center align-items-center col-4 cell" id="cell4"></div>
+            <div class="d-flex justify-content-center align-items-center col-4 cell" id="cell5"></div>
+            <div class="d-flex justify-content-center align-items-center col-4 cell" id="cell6"></div>
+            <div class="d-flex justify-content-center align-items-center col-4 cell" id="cell7"></div>
+            <div class="d-flex justify-content-center align-items-center col-4 cell" id="cell8"></div>
+            <div class="d-flex justify-content-center align-items-center col-4 cell" id="cell9"></div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center mb-5">
+        <button class="btn btn-primary mb-5" id="restart"> restart <i class="fas fa-play-circle"></i></button>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="js/utilities.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
