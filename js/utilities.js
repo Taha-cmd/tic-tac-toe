@@ -40,10 +40,10 @@ function playerWon(cell) {
 		});
 	}
 
-	if (allEqual(row)) return true;
-	if (allEqual(column)) return true;
-	if (allEqual(diagonalLeft)) return true;
-	if (allEqual(diagonalRight)) return true;
+	if (allEqual(row)) return row;
+	if (allEqual(column)) return column;
+	if (allEqual(diagonalLeft)) return diagonalLeft;
+	if (allEqual(diagonalRight)) return diagonalRight;
 
 	return false;
 }
@@ -109,4 +109,11 @@ function allEqual(args) {
 function reset() {
 	const click = new Event("click");
 	restart.dispatchEvent(click);
+	cells.forEach((cell) => cell.classList.remove("winner"));
+}
+
+function animateWinnerLine(line) {
+	line.forEach((el) =>
+		document.querySelector(`#cell${el.idx}`).classList.add("winner")
+	);
 }

@@ -12,12 +12,11 @@ function handleClick(e) {
 	cell.innerText = symbol;
 	flipSymbol();
 
-	if (playerWon(cell)) {
-		flipSymbol();
-		setTimeout(() => {
-			alert(`${symbol} has won the game`);
-			reset();
-		}, 300);
+	const winnerLine = playerWon(cell);
+
+	if (typeof winnerLine == "object") {
+		animateWinnerLine(winnerLine);
+		setTimeout(() => reset(), 1000);
 		return;
 	}
 
