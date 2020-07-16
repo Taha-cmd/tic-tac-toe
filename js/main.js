@@ -1,9 +1,11 @@
-restart.addEventListener("click", (e) => {
-	cells.forEach((cell) => (cell.innerText = ""));
-	if (symbol == "O") flipSymbol();
-});
+restart.addEventListener("click", () => end());
 
-cells.forEach((cell) => cell.addEventListener("click", handleClick));
+sizeSelectors.forEach((selector) => {
+	selector.addEventListener('click', (e) => {
+		size = parseInt(e.target.attributes.value.value, 10);
+		start();
+	});
+});
 
 function handleClick(e) {
 	const cell = e.target;
@@ -16,14 +18,14 @@ function handleClick(e) {
 
 	if (typeof winnerLine == "object") {
 		animateWinnerLine(winnerLine);
-		setTimeout(() => reset(), 1000);
+		setTimeout(() => end(), 1000);
 		return;
 	}
 
-	if (noWinner()) {
+	if (isDraw()) {
 		setTimeout(() => {
 			alert("No winner");
-			reset();
+			end();
 		}, 300);
 	}
 }
