@@ -1,20 +1,6 @@
-const size = 3;
-const cells = document.querySelectorAll(".cell");
-const restart = document.querySelector("#restart");
-let symbol = "X";
-
-function flipSymbol() {
-	symbol = symbol == "X" ? "O" : "X";
-	document.querySelector("#current-symbol").innerText = symbol;
-}
-
-function isFlipped(cell) {
-	return cell.innerText != "";
-}
-
-function playerWon(cell) {
+ function playerWon(cell) {
 	const id = cell.attributes.id.value;
-	const idx = parseInt(id.slice(id.length - 1, id.length), 10);
+	const idx = parseInt(id.match(/[0-9]+/)[0], 10);
 
 	let row = [{ idx: idx, value: valueAtIdx(idx) }];
 	let column = [{ idx: idx, value: valueAtIdx(idx) }];
@@ -40,19 +26,17 @@ function playerWon(cell) {
 		});
 	}
 
-	if (allEqual(row)) return row;
-	if (allEqual(column)) return column;
-	if (allEqual(diagonalLeft)) return diagonalLeft;
-	if (allEqual(diagonalRight)) return diagonalRight;
+	if (allEqual(valueAtIdx(idx), row)) 			return row;
+	if (allEqual(valueAtIdx(idx), column)) 			return column;
+	if (allEqual(valueAtIdx(idx), diagonalLeft)) 	return diagonalLeft;
+	if (allEqual(valueAtIdx(idx), diagonalRight)) 	return diagonalRight;
 
 	return false;
 }
 
-function noWinner() {
+function isDraw() {
 	let noWinner = true;
-	cells.forEach((cell) => {
-		if (cell.innerText == "") noWinner = false;
-	});
+	cells.forEach(cell => {if(cell.innerText == "") noWinner = false});
 	return noWinner;
 }
 
@@ -97,23 +81,9 @@ function nextDiagonalIdxRight(idx) {
 	return null;
 }
 
-function allEqual(args) {
-	for (var i = 1; i < args.length; i++) {
-		if (args[i].value == null) return false;
-		if (args[i].value != args[i - 1].value) return false;
-	}
-
-	return true;
+function allEqual(value, args) {
+	
+	if(args.some((arg) => {return arg.value === null || arg.value === ''})) return false;
+	return args.every((arg) => {return arg.value === value});
 }
 
-function reset() {
-	const click = new Event("click");
-	restart.dispatchEvent(click);
-	cells.forEach((cell) => cell.classList.remove("winner"));
-}
-
-function animateWinnerLine(line) {
-	line.forEach((el) =>
-		document.querySelector(`#cell${el.idx}`).classList.add("winner")
-	);
-}
