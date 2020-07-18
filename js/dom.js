@@ -34,14 +34,25 @@ function end(){
 }
 
 function makeGrid(){
-	const col = size == 3 ? 4 : 3;
+	let col; 
+
+	switch(size)
+	{
+		case 3: col = 4; break;
+		case 4: col = 3; break;
+		case 6: col = 2; break;
+	}
+
 	let div;
 	for(var i = 1; i <= size ** 2; i++){
 		div = document.createElement('div');
-		div.setAttribute('class', `d-flex justify-content-center align-items-center col-${col} cell`);
+		div.setAttribute('class', 
+			`d-flex justify-content-center align-items-center col-${col} cell`
+		);
 		div.setAttribute('id', `cell${i}`);
 		grid.append(div);
 	}
+
 }
 
 function deleteGrid(){
