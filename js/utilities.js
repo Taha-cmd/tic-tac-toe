@@ -35,9 +35,7 @@
 }
 
 function isDraw() {
-	let noWinner = true;
-	cells.forEach(cell => {if(cell.innerText == "") noWinner = false});
-	return noWinner;
+	return cells.every((cell) => { return cell.innerText !== '' });
 }
 
 function valueAtIdx(idx) {
@@ -82,7 +80,6 @@ function nextDiagonalIdxRight(idx) {
 }
 
 function allEqual(value, args) {
-	
 	if(args.some((arg) => {return arg.value === null || arg.value === ''})) return false;
 	return args.every((arg) => {return arg.value === value});
 }
