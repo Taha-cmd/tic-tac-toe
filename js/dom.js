@@ -6,6 +6,7 @@ const sizeSelectors = Array.from(document.querySelectorAll('.size-selector'));
 
 let symbol = "X";
 let cells;
+let size;
 
 function flipSymbol() {
 	symbol = symbol == "X" ? "O" : "X";
@@ -16,10 +17,10 @@ function isFlipped(cell) {
 	return cell.innerText != "";
 }
 
-function start(size) {
+function start() {
 	hideUsingBootstrapClasses(sizeSelectorsContainer);
 	showUsingBootstrapClasses(restartContainer);
-	makeGrid(size);
+	makeGrid();
 	cells = Array.from(document.querySelectorAll('.cell'));
 	cells.forEach((cell) => cell.addEventListener("click", handleClick));
 	if (symbol == "O") flipSymbol();
@@ -32,8 +33,8 @@ function end(){
 	deleteGrid();
 }
 
-function makeGrid(size){
-	const col = 12 / size;  // 12 for using bootstrap grid
+function makeGrid(){
+	const col = 12 / size; 
 
 	let div;
 	for(var i = 1; i <= size ** 2; i++){
@@ -44,7 +45,6 @@ function makeGrid(size){
 		div.setAttribute('id', `cell${i}`);
 		grid.append(div);
 	}
-
 }
 
 function deleteGrid(){

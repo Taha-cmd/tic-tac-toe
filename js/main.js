@@ -2,7 +2,8 @@ restart.addEventListener("click", () => end());
 
 sizeSelectors.forEach((selector) => {
 	selector.addEventListener('click', (e) => {
-		start(parseInt(e.target.attributes.value.value, 10));
+		size = parseInt(e.target.attributes.value.value, 10);
+		start();
 	});
 });
 
