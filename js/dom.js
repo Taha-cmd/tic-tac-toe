@@ -34,14 +34,7 @@ function end(){
 }
 
 function makeGrid(){
-	let col; 
-
-	switch(size)
-	{
-		case 3: col = 4; break;
-		case 4: col = 3; break;
-		case 6: col = 2; break;
-	}
+	const col = 12 / size; 
 
 	let div;
 	for(var i = 1; i <= size ** 2; i++){
@@ -52,7 +45,6 @@ function makeGrid(){
 		div.setAttribute('id', `cell${i}`);
 		grid.append(div);
 	}
-
 }
 
 function deleteGrid(){
